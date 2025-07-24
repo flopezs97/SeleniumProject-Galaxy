@@ -23,7 +23,6 @@ public class BaseTest {
 
     @BeforeTest
     public void loadSettings() {
-        Log.info("Loading base URL for all testing.");
     }
 
     @BeforeMethod

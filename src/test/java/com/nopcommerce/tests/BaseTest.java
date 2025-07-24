@@ -1,0 +1,55 @@
+package com.nopcommerce.tests;
+
+import com.github.javafaker.Faker;
+import com.nopcommerce.logs.Log;
+import com.nopcommerce.utils.Variables;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import java.time.Duration;
+import java.util.Locale;
+
+public class BaseTest {
+    protected WebDriver driver;
+
+    public Faker faker;
+    public JavascriptExecutor js;
+    public Actions actions;
+
+    @BeforeTest
+    public void loadSettings() {
+
+    }
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.get(Variables.BASE_URL);
+
+        faker = new Faker(new Locale("en-US"));
+        actions = new Actions(driver);
+
+        Log.info("Initializing Page Object Model");
+
+        js = (JavascriptExecutor) driver;
+    }
+
+    @AfterMethod
+    public void teardown() {
+        Log.info("Closing the driver instance");
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+}

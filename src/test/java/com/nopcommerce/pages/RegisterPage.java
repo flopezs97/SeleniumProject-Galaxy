@@ -55,11 +55,6 @@ public class RegisterPage extends BasePage {
         Assert.assertEquals(find(validRegisterTitle).getText(), expected_title_register);
     }
 
-    public void showUserDetails(String email, String password) {
-        System.out.println("Email: " + email + "\n");
-        System.out.println("Password: " + password);
-    }
-
     public void verifyEmptyRequiredFields(String firstNameError, String lastNameError, String emailError, String passwordError) {
         Assert.assertEquals(find(labelFirstNameError).getText(), firstNameError);
         Assert.assertEquals(find(labelLastNameError).getText(), lastNameError);
@@ -73,6 +68,10 @@ public class RegisterPage extends BasePage {
 
     public void verifySecurePassword(String unsecurePass) {
         Assert.assertEquals(find(labelPasswordError).getText(), unsecurePass);
+    }
+
+    public void verifyConfirmPassword(String confirmPassword) {
+        Assert.assertEquals(find(labelConfirmPasswordError).getText(), confirmPassword);
     }
 
 }

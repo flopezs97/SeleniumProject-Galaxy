@@ -35,7 +35,6 @@ public class RegisterTest extends BaseTest {
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
         registerPage.clickOnRegister();
         registerPage.verifyValidRegister(Variables.expected_title);
-        registerPage.showUserDetails(email, password);
     }
 
     @Test(groups = {"Functional", "Integration"})
@@ -70,5 +69,15 @@ public class RegisterTest extends BaseTest {
         registerPage.verifySecurePassword(Variables.expected_unsecure_password);
     }
 
-    
+    @Test(groups = {"Functional", "Integration"})
+    @Description("TC-Register-05")
+    public void doRegisterWithNoMatchPasswords(Method method) throws InterruptedException {
+        startTest(method.getName(), "doRegisterWithNoMatchPasswords");
+        homePage.goToRegisterPage();
+        registerPage.generateGender(randomGender);
+        registerPage.registerUserDetails(firstName, lastName, email, company, password, weakPassword);
+        registerPage.clickOnRegister();
+        registerPage.verifyConfirmPassword(Variables.expected_confirm_password);
+    }
+
 }

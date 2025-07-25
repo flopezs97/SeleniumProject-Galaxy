@@ -9,6 +9,7 @@
                     <include name="doRegisterUserWithNoRequiredFields"/>
                     <include name="doRegisterUserWithInvalidEmail"/>
                     <include name="doRegisterWithUnsecurePassword"/>
+                    <include name="doRegisterWithNoMatchPasswords"/>
                 </methods>
             </class>
         </classes>

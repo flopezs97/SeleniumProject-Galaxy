@@ -11,4 +11,5 @@ public class Variables {
     public static String expected_unsecure_password = "Password must meet the following rules: must have at least 6 characters " +
             "and not greater than 64 characters";
     public static String expected_confirm_password = "The password and confirmation password do not match.";
+    public static String expected_email_repeated = "The specified email already exists";
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Functional Tests">
+        <classes>
+            <class name="com.nopcommerce.tests.RegisterTest">
+                <methods>
+                    <include name="doSuccessfulRegister"/>
+                    <include name="doRegisterUserWithNoRequiredFields"/>
+                    <include name="doRegisterUserWithInvalidEmail"/>
+                    <exclude name="doRegisterWithUnsecurePassword"/>
+                    <include name="doRegisterWithNoMatchPasswords"/>
+                    <exclude name="doRegisterWithRepeatedEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Regression Tests">
+        <classes>
+            <class name="com.nopcommerce.tests.RegisterTest">
+                <methods>
+                    <exclude name="doSuccessfulRegister"/>
+                    <exclude name="doRegisterUserWithNoRequiredFields"/>
+                    <include name="doRegisterUserWithInvalidEmail"/>
+                    <include name="doRegisterWithUnsecurePassword"/>
+                    <exclude name="doRegisterWithNoMatchPasswords"/>
+                    <exclude name="doRegisterWithRepeatedEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Integration Tests">
+        <classes>
+            <class name="com.nopcommerce.tests.RegisterTest">
+                <methods>
+                    <exclude name="doSuccessfulRegister"/>
+                    <include name="doRegisterUserWithNoRequiredFields"/>
+                    <exclude name="doRegisterUserWithInvalidEmail"/>
+                    <exclude name="doRegisterWithUnsecurePassword"/>
+                    <include name="doRegisterWithNoMatchPasswords"/>
+                    <include name="doRegisterWithRepeatedEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

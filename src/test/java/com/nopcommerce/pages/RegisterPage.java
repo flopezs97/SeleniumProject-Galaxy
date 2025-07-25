@@ -22,6 +22,7 @@ public class RegisterPage extends BasePage {
     public By labelEmailError = By.id("Email-error");
     public By labelPasswordError = By.id("Password-error");
     public By labelConfirmPasswordError = By.id("ConfirmPassword-error");
+    public By labelRepeatedEmailError = By.xpath("//li[text()='The specified email already exists']");
 
     /* Constructor */
     public RegisterPage(WebDriver driver) {
@@ -72,6 +73,10 @@ public class RegisterPage extends BasePage {
 
     public void verifyConfirmPassword(String confirmPassword) {
         Assert.assertEquals(find(labelConfirmPasswordError).getText(), confirmPassword);
+    }
+
+    public void verifyRepeatedEmail(String repeatedEmail) {
+        Assert.assertEquals(find(labelRepeatedEmailError).getText(), repeatedEmail);
     }
 
 }

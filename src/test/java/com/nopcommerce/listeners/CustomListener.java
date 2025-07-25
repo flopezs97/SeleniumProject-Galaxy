@@ -8,6 +8,7 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -16,7 +17,7 @@ import java.util.Objects;
 
 import static com.nopcommerce.extentreports.ExtentTestManager.getTest;
 
-public class CustomListener extends BaseTest implements ITestListener {
+public class CustomListener extends BaseTest implements ITestListener, ISuiteListener {
     WebDriver driver;
 
     private static String getTestMethodName(ITestResult iTestResult) {

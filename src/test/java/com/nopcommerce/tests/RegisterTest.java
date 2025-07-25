@@ -5,12 +5,11 @@ import com.nopcommerce.utils.Variables;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 import java.util.Locale;
-
-import static com.nopcommerce.extentreports.ExtentTestManager.startTest;
 
 @Epic("Non commerce Tests")
 @Feature("Register Tests")
@@ -28,8 +27,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Functional"})
     @Description("TC-Register-01")
-    public void doRegisterUser(Method method) throws InterruptedException {
-        startTest(method.getName(), "doRegisterUser");
+    public void doSuccessfulRegister(Method method) throws InterruptedException {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
@@ -40,7 +38,6 @@ public class RegisterTest extends BaseTest {
     @Test(groups = {"Functional", "Integration"})
     @Description("TC-Register-02")
     public void doRegisterUserWithNoRequiredFields(Method method) throws InterruptedException {
-        startTest(method.getName(), "doRegisterUserWithNoRequiredFields");
         homePage.goToRegisterPage();
         registerPage.clickOnRegister();
         registerPage.verifyEmptyRequiredFields(Variables.expected_firstname, Variables.expected_lastname,
@@ -50,7 +47,6 @@ public class RegisterTest extends BaseTest {
     @Test(groups = {"Functional", "Regression"})
     @Description("TC-Register-03")
     public void doRegisterUserWithInvalidEmail(Method method) throws InterruptedException {
-        startTest(method.getName(), "doRegisterUserWithInvalidEmail");
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, invalidEmail, company, password, password);
@@ -61,7 +57,6 @@ public class RegisterTest extends BaseTest {
     @Test(groups = {"Regression"})
     @Description("TC-Register-04")
     public void doRegisterWithUnsecurePassword(Method method) throws InterruptedException {
-        startTest(method.getName(), "doRegisterWithUnsecurePassword");
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, weakPassword, weakPassword);
@@ -72,7 +67,6 @@ public class RegisterTest extends BaseTest {
     @Test(groups = {"Functional", "Integration"})
     @Description("TC-Register-05")
     public void doRegisterWithNoMatchPasswords(Method method) throws InterruptedException {
-        startTest(method.getName(), "doRegisterWithNoMatchPasswords");
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, weakPassword);
@@ -80,4 +74,22 @@ public class RegisterTest extends BaseTest {
         registerPage.verifyConfirmPassword(Variables.expected_confirm_password);
     }
 
+    @Test(groups = {"Integration"}, dataProvider = "dp-email-already-register")
+    @Description("TC-Register-06")
+    public void doRegisterWithRepeatedEmail(Method method, String repeatedEmail, String repeatedPass)
+            throws InterruptedException {
+        homePage.goToRegisterPage();
+        registerPage.generateGender(randomGender);
+        registerPage.registerUserDetails(firstName, lastName, repeatedEmail, company, repeatedPass, repeatedPass);
+        registerPage.clickOnRegister();
+        registerPage.verifyRepeatedEmail(Variables.expected_email_repeated);
+    }
+
+    @DataProvider(name = "dp-email-already-register")
+    public Object[][] dataEmailRegister() {
+        return new Object[][]{
+                {"leonardo.metz@yahoo.com", "sRjt*J%#"},
+                {"benedict.schuppe@hotmail.com", "#tb5v7*o7"}
+        };
+    }
 }

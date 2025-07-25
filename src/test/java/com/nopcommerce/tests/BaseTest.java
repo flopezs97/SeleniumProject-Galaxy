@@ -2,6 +2,8 @@ package com.nopcommerce.tests;
 
 import com.github.javafaker.Faker;
 import com.nopcommerce.logs.Log;
+import com.nopcommerce.pages.HomePage;
+import com.nopcommerce.pages.RegisterPage;
 import com.nopcommerce.utils.Variables;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,8 @@ import java.util.Locale;
 
 public class BaseTest {
     protected WebDriver driver;
+    protected HomePage homePage;
+    protected RegisterPage registerPage;
 
     public Faker faker;
     public JavascriptExecutor js;
@@ -23,6 +27,7 @@ public class BaseTest {
 
     @BeforeTest
     public void loadSettings() {
+        Log.info("Loading base URL for all testing");
     }
 
     @BeforeMethod
@@ -36,7 +41,8 @@ public class BaseTest {
         actions = new Actions(driver);
 
         Log.info("Initializing Page Object Model");
-
+        homePage = new HomePage(driver);
+        registerPage = new RegisterPage(driver);
         js = (JavascriptExecutor) driver;
     }
 

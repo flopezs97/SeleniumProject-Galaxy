@@ -6,6 +6,7 @@
             <class name="com.nopcommerce.tests.RegisterTest">
                 <methods>
                     <include name="doRegisterUser"/>
+                    <include name="doRegisterUserWithNoRequiredFields"/>
                 </methods>
             </class>
         </classes>

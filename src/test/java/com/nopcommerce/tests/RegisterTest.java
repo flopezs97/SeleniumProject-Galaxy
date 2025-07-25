@@ -21,8 +21,12 @@ public class RegisterTest extends BaseTest {
     String password = faker.internet().password(8, 10, true, true,
             true);
     String expected_title = "Your registration completed";
+    String expected_firstname = "First name is required.";
+    String expected_lastname = "Last name is required.";
+    String expected_email = "Email is required.";
+    String expected_password = "Password is required.";
 
-    @Test(groups = "{Functional}")
+    @Test(groups = {"Functional"})
     @Description("TC-Register-01")
     public void doRegisterUser(Method method) throws Exception {
         homePage.goToRegisterPage();
@@ -31,5 +35,13 @@ public class RegisterTest extends BaseTest {
         registerPage.clickOnRegister();
         registerPage.verifyValidRegister(expected_title);
         registerPage.showUserDetails(email, password);
+    }
+
+    @Test(groups = {"Functional", "Integration"})
+    @Description("TC-Register-02")
+    public void doRegisterUserWithNoRequiredFields(Method method) throws Exception {
+        homePage.goToRegisterPage();
+        registerPage.clickOnRegister();
+        registerPage.verifyEmptyRequiredFields(expected_firstname, expected_lastname, expected_email, expected_password);
     }
 }

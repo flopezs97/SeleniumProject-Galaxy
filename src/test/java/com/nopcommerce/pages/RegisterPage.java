@@ -17,6 +17,10 @@ public class RegisterPage extends BasePage {
     public By inputConfirmPassword = By.id("ConfirmPassword");
     public By btnRegister = By.id("register-button");
     public By validRegisterTitle = By.xpath("//div[text()='Your registration completed']");
+    public By labelFirstNameError = By.id("FirstName-error");
+    public By labelLastNameError = By.id("LastName-error");
+    public By labelEmailError = By.id("Email-error");
+    public By labelPasswordError = By.id("ConfirmPassword-error");
 
     /* Constructor */
     public RegisterPage(WebDriver driver) {
@@ -54,6 +58,13 @@ public class RegisterPage extends BasePage {
     public void showUserDetails(String email, String password) {
         System.out.println("Email: " + email + "\n");
         System.out.println("Password: " + password);
+    }
+
+    public void verifyEmptyRequiredFields(String firstNameError, String lastNameError, String emailError, String passwordError) {
+        Assert.assertEquals(find(labelFirstNameError).getText(), firstNameError);
+        Assert.assertEquals(find(labelLastNameError).getText(), lastNameError);
+        Assert.assertEquals(find(labelEmailError).getText(), emailError);
+        Assert.assertEquals(find(labelPasswordError).getText(), passwordError);
     }
 
 }

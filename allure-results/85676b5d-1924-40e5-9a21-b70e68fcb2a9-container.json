@@ -1,0 +1,1 @@
+{"uuid":"85676b5d-1924-40e5-9a21-b70e68fcb2a9","name":"Register new user","children":["aef1683b-62e8-4c01-806c-95790d8c2c47"],"befores":[{"name":"loadSettings","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1753415295707,"stop":1753415295959}],"afters":[],"start":1753415295676,"stop":1753415300474}

@@ -30,5 +30,6 @@ public class RegisterTest extends BaseTest {
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
         registerPage.clickOnRegister();
         registerPage.verifyValidRegister(expected_title);
+        registerPage.showUserDetails(email, password);
     }
 }

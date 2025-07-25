@@ -51,4 +51,9 @@ public class RegisterPage extends BasePage {
         Assert.assertEquals(find(validRegisterTitle).getText(), expected_title_register);
     }
 
+    public void showUserDetails(String email, String password) {
+        System.out.println("Email: " + email + "\n");
+        System.out.println("Password: " + password);
+    }
+
 }

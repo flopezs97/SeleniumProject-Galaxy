@@ -8,4 +8,6 @@ public class Variables {
     public static String expected_email = "Email is required.";
     public static String expected_password = "Password is required.";
     public static String expected_invalid_email = "Please enter a valid email address.";
+    public static String expected_unsecure_password = "Password must meet the following rules: must have at least 6 characters " +
+            "and not greater than 64 characters";
 }

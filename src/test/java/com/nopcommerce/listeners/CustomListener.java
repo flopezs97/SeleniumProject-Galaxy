@@ -54,7 +54,7 @@ public class CustomListener extends BaseTest implements ITestListener {
         getTest().log(Status.FAIL, "Test failed", getTest().addScreenCaptureFromBase64String(base64Screenshot)
                 .getModel().getMedia().get(0));
 
-        saveScreenshotJPG(driver);
+        saveScreenshotPNG(driver);
 
         saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken.");
     }
@@ -70,8 +70,8 @@ public class CustomListener extends BaseTest implements ITestListener {
         Log.info("Test failed but is in defined success ratio " + getTestMethodName(iTestResult));
     }
 
-    @Attachment(value = "Page Screenshot", type = "image/jpg")
-    public byte[] saveScreenshotJPG(WebDriver webDriver) {
+    @Attachment(value = "Page Screenshot", type = "image/png")
+    public byte[] saveScreenshotPNG(WebDriver webDriver) {
         return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
 

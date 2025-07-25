@@ -8,6 +8,7 @@
                     <include name="doRegisterUser"/>
                     <include name="doRegisterUserWithNoRequiredFields"/>
                     <include name="doRegisterUserWithInvalidEmail"/>
+                    <include name="doRegisterWithUnsecurePassword"/>
                 </methods>
             </class>
         </classes>

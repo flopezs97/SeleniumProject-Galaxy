@@ -20,7 +20,8 @@ public class RegisterPage extends BasePage {
     public By labelFirstNameError = By.id("FirstName-error");
     public By labelLastNameError = By.id("LastName-error");
     public By labelEmailError = By.id("Email-error");
-    public By labelPasswordError = By.id("ConfirmPassword-error");
+    public By labelPasswordError = By.id("Password-error");
+    public By labelConfirmPasswordError = By.id("ConfirmPassword-error");
 
     /* Constructor */
     public RegisterPage(WebDriver driver) {
@@ -38,7 +39,6 @@ public class RegisterPage extends BasePage {
 
     public void registerUserDetails(String firstname, String lastname, String email, String companyName, String password,
                                     String confirmPassword) {
-
         type(inputFirstName, firstname);
         type(inputLastName, lastname);
         type(inputEmail, email);
@@ -64,11 +64,15 @@ public class RegisterPage extends BasePage {
         Assert.assertEquals(find(labelFirstNameError).getText(), firstNameError);
         Assert.assertEquals(find(labelLastNameError).getText(), lastNameError);
         Assert.assertEquals(find(labelEmailError).getText(), emailError);
-        Assert.assertEquals(find(labelPasswordError).getText(), passwordError);
+        Assert.assertEquals(find(labelConfirmPasswordError).getText(), passwordError);
     }
 
     public void verifyValidEmail(String invalidEmailError) {
         Assert.assertEquals(find(labelEmailError).getText(), invalidEmailError);
+    }
+
+    public void verifySecurePassword(String unsecurePass) {
+        Assert.assertEquals(find(labelPasswordError).getText(), unsecurePass);
     }
 
 }

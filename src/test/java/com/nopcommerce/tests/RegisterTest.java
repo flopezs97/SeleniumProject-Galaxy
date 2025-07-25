@@ -1,6 +1,7 @@
 package com.nopcommerce.tests;
 
 import com.github.javafaker.Faker;
+import com.nopcommerce.utils.ErrorMessages;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -20,11 +21,6 @@ public class RegisterTest extends BaseTest {
     String company = faker.company().name();
     String password = faker.internet().password(8, 10, true, true,
             true);
-    String expected_title = "Your registration completed";
-    String expected_firstname = "First name is required.";
-    String expected_lastname = "Last name is required.";
-    String expected_email = "Email is required.";
-    String expected_password = "Password is required.";
 
     @Test(groups = {"Functional"})
     @Description("TC-Register-01")
@@ -33,7 +29,7 @@ public class RegisterTest extends BaseTest {
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
         registerPage.clickOnRegister();
-        registerPage.verifyValidRegister(expected_title);
+        registerPage.verifyValidRegister(ErrorMessages.expected_title);
         registerPage.showUserDetails(email, password);
     }
 
@@ -42,6 +38,7 @@ public class RegisterTest extends BaseTest {
     public void doRegisterUserWithNoRequiredFields(Method method) throws Exception {
         homePage.goToRegisterPage();
         registerPage.clickOnRegister();
-        registerPage.verifyEmptyRequiredFields(expected_firstname, expected_lastname, expected_email, expected_password);
+        registerPage.verifyEmptyRequiredFields(ErrorMessages.expected_firstname, ErrorMessages.expected_lastname,
+                ErrorMessages.expected_email, ErrorMessages.expected_password);
     }
 }

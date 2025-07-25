@@ -1,7 +1,7 @@
 package com.nopcommerce.tests;
 
 import com.github.javafaker.Faker;
-import com.nopcommerce.utils.ErrorMessages;
+import com.nopcommerce.utils.Variables;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -21,6 +21,7 @@ public class RegisterTest extends BaseTest {
     String company = faker.company().name();
     String password = faker.internet().password(8, 10, true, true,
             true);
+    String invalidEmail = faker.name().username();
 
     @Test(groups = {"Functional"})
     @Description("TC-Register-01")
@@ -29,7 +30,7 @@ public class RegisterTest extends BaseTest {
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
         registerPage.clickOnRegister();
-        registerPage.verifyValidRegister(ErrorMessages.expected_title);
+        registerPage.verifyValidRegister(Variables.expected_title);
         registerPage.showUserDetails(email, password);
     }
 
@@ -38,7 +39,18 @@ public class RegisterTest extends BaseTest {
     public void doRegisterUserWithNoRequiredFields(Method method) throws Exception {
         homePage.goToRegisterPage();
         registerPage.clickOnRegister();
-        registerPage.verifyEmptyRequiredFields(ErrorMessages.expected_firstname, ErrorMessages.expected_lastname,
-                ErrorMessages.expected_email, ErrorMessages.expected_password);
+        registerPage.verifyEmptyRequiredFields(Variables.expected_firstname, Variables.expected_lastname,
+                Variables.expected_email, Variables.expected_password);
     }
+
+    @Test(groups = {"Functional", "Regression"})
+    @Description("TC-Register-03")
+    public void doRegisterUserWithInvalidEmail(Method method) throws Exception {
+        homePage.goToRegisterPage();
+        registerPage.generateGender(randomGender);
+        registerPage.registerUserDetails(firstName, lastName, invalidEmail, company, password, password);
+        registerPage.clickOnRegister();
+        registerPage.verifyValidEmail(Variables.expected_invalid_email);
+    }
+
 }

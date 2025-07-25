@@ -67,4 +67,8 @@ public class RegisterPage extends BasePage {
         Assert.assertEquals(find(labelPasswordError).getText(), passwordError);
     }
 
+    public void verifyValidEmail(String invalidEmailError) {
+        Assert.assertEquals(find(labelEmailError).getText(), invalidEmailError);
+    }
+
 }

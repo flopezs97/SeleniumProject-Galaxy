@@ -22,4 +22,13 @@ public class LoginTest extends BaseTest {
         loginPage.loginUser(email, password);
         homePage.verifyLoginSuccessful(Variables.expected_my_account);
     }
+
+    @Test(groups = {"Functional"}, dataProviderClass = CustomDataProvider.class,
+            dataProvider = "dp-invalid-credentials")
+    @Description("TC-Login-02")
+    public void doLoginWithInvalidCredentials(Method method, String email, String password) {
+        homePage.goToLoginPage();
+        loginPage.loginUser(email, password);
+        loginPage.verifyValidCredentials(Variables.expected_login_error);
+    }
 }

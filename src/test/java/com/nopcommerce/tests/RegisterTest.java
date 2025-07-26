@@ -27,7 +27,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Functional"})
     @Description("TC-Register-01")
-    public void doSuccessfulRegister(Method method) throws InterruptedException {
+    public void doSuccessfulRegister(Method method) {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, password);
@@ -37,7 +37,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Functional", "Integration"})
     @Description("TC-Register-02")
-    public void doRegisterUserWithNoRequiredFields(Method method) throws InterruptedException {
+    public void doRegisterUserWithNoRequiredFields(Method method) {
         homePage.goToRegisterPage();
         registerPage.clickOnRegister();
         registerPage.verifyEmptyRequiredFields(Variables.expected_firstname, Variables.expected_lastname,
@@ -46,7 +46,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Functional", "Regression"})
     @Description("TC-Register-03")
-    public void doRegisterUserWithInvalidEmail(Method method) throws InterruptedException {
+    public void doRegisterUserWithInvalidEmail(Method method) {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, invalidEmail, company, password, password);
@@ -56,7 +56,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Regression"})
     @Description("TC-Register-04")
-    public void doRegisterWithUnsecurePassword(Method method) throws InterruptedException {
+    public void doRegisterWithUnsecurePassword(Method method) {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, weakPassword, weakPassword);
@@ -66,7 +66,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Functional", "Integration"})
     @Description("TC-Register-05")
-    public void doRegisterWithNoMatchPasswords(Method method) throws InterruptedException {
+    public void doRegisterWithNoMatchPasswords(Method method) {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, email, company, password, weakPassword);
@@ -76,8 +76,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(groups = {"Integration"}, dataProviderClass = CustomDataProvider.class, dataProvider = "dp-email-already-register")
     @Description("TC-Register-06")
-    public void doRegisterWithRepeatedEmail(Method method, String repeatedEmail, String repeatedPass)
-            throws InterruptedException {
+    public void doRegisterWithRepeatedEmail(Method method, String repeatedEmail, String repeatedPass) {
         homePage.goToRegisterPage();
         registerPage.generateGender(randomGender);
         registerPage.registerUserDetails(firstName, lastName, repeatedEmail, company, repeatedPass, repeatedPass);

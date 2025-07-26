@@ -13,4 +13,6 @@ public class Variables {
     public static String expected_confirm_password = "The password and confirmation password do not match.";
     public static String expected_email_repeated = "The specified email already exists";
     public static String expected_my_account = "My account";
+    public static String expected_login_error = "Login was unsuccessful. Please correct the errors and try again.\n"
+            + "The credentials provided are incorrect";
 }

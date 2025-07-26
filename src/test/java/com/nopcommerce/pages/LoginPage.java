@@ -11,6 +11,7 @@ public class LoginPage extends BasePage {
     public By inputPassword = By.id("Password");
     public By btnLogin = By.xpath("//button[text()='Log in']");
     public By labelErrorLogin = By.className("message-error");
+    public By labelEmailError = By.id("Email-error");
 
     /* Constructor */
     public LoginPage(WebDriver driver) {
@@ -21,11 +22,22 @@ public class LoginPage extends BasePage {
     public void loginUser(String email, String password) {
         type(inputEmail, email);
         type(inputPassword, password);
+    }
+
+    public void clickOnLogin() {
         submit(btnLogin);
     }
 
     public void verifyValidCredentials(String invalidCredentials) {
         Assert.assertEquals(find(labelErrorLogin).getText(), invalidCredentials);
+    }
+
+    public void verifyEmptyLoginFields(String emptyLoginFields) {
+        Assert.assertEquals(find(labelEmailError).getText(), emptyLoginFields);
+    }
+
+    public void verifyNoRegisterUser(String notFoundUser) {
+        Assert.assertEquals(find(labelErrorLogin).getText(), notFoundUser);
     }
 
 }

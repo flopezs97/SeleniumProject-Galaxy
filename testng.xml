@@ -17,6 +17,8 @@
                 <methods>
                     <exclude name="doSuccessfulLogin"/>
                     <include name="doLoginWithInvalidCredentials"/>
+                    <include name="doLoginWithEmptyFields"/>
+                    <exclude name="doLoginWithNoRegisterUser"/>
                 </methods>
             </class>
         </classes>
@@ -37,6 +39,8 @@
                 <methods>
                     <include name="doSuccessfulLogin"/>
                     <exclude name="doLoginWithInvalidCredentials"/>
+                    <exclude name="doLoginWithEmptyFields"/>
+                    <include name="doLoginWithNoRegisterUser"/>
                 </methods>
             </class>
         </classes>
@@ -57,6 +61,8 @@
                 <methods>
                     <include name="doSuccessfulLogin"/>
                     <exclude name="doLoginWithInvalidCredentials"/>
+                    <exclude name="doLoginWithEmptyFields"/>
+                    <exclude name="doLoginWithNoRegisterUser"/>
                 </methods>
             </class>
         </classes>

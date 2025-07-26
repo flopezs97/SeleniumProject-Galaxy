@@ -15,4 +15,7 @@ public class Variables {
     public static String expected_my_account = "My account";
     public static String expected_login_error = "Login was unsuccessful. Please correct the errors and try again.\n"
             + "The credentials provided are incorrect";
+    public static String expected_empty_login_fields = "Please enter your email";
+    public static String expected_no_register_user_error = "Login was unsuccessful. Please correct the errors and try again.\n"
+            + "No customer account found";
 }

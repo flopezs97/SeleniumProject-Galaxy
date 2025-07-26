@@ -34,7 +34,7 @@ public class PasswordRecoveryPage extends BasePage {
     }
 
     public void verifyEmailRecoverySent() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Variables.EXPLICIT_WAIT_TIME));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Variables.TIME_WAIT));
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(msgEmailSent));
         String actualText = notification.getText();
         Assert.assertEquals(find(msgEmailSent).getText(), actualText);

@@ -19,5 +19,5 @@ public class Variables {
     public static String expected_no_register_user_error = "Login was unsuccessful. Please correct the errors and try again.\n"
             + "No customer account found";
     public static String expected_password_recovery = "Password recovery";
-    public static int EXPLICIT_WAIT_TIME = 10;
+    public static int TIME_WAIT = 10;
 }

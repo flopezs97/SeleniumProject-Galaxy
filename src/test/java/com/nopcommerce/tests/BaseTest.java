@@ -37,7 +37,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Variables.TIME_WAIT));
         driver.manage().window().maximize();
         driver.get(Variables.BASE_URL);
 

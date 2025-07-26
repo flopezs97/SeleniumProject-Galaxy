@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.nopcommerce.logs.Log;
 import com.nopcommerce.pages.HomePage;
 import com.nopcommerce.pages.LoginPage;
+import com.nopcommerce.pages.PasswordRecoveryPage;
 import com.nopcommerce.pages.RegisterPage;
 import com.nopcommerce.utils.Variables;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,6 +23,7 @@ public class BaseTest {
     protected HomePage homePage;
     protected RegisterPage registerPage;
     protected LoginPage loginPage;
+    protected PasswordRecoveryPage passwordRecoveryPage;
 
     public Faker faker;
     public JavascriptExecutor js;
@@ -46,6 +48,7 @@ public class BaseTest {
         homePage = new HomePage(driver);
         registerPage = new RegisterPage(driver);
         loginPage = new LoginPage(driver);
+        passwordRecoveryPage = new PasswordRecoveryPage(driver);
         js = (JavascriptExecutor) driver;
     }
 

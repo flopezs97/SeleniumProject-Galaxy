@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     public By btnLogin = By.xpath("//button[text()='Log in']");
     public By labelErrorLogin = By.className("message-error");
     public By labelEmailError = By.id("Email-error");
+    public By labelForgotPassword = By.xpath("//a[text()='Forgot password?']");
 
     /* Constructor */
     public LoginPage(WebDriver driver) {
@@ -26,6 +27,10 @@ public class LoginPage extends BasePage {
 
     public void clickOnLogin() {
         submit(btnLogin);
+    }
+
+    public void clickOnForgotPassword() {
+        find(labelForgotPassword).click();
     }
 
     public void verifyValidCredentials(String invalidCredentials) {

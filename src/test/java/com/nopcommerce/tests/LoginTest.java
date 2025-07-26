@@ -46,10 +46,21 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(groups = {"Regression"})
+    @Description("TC-Login-04")
     public void doLoginWithNoRegisterUser(Method method) {
         homePage.goToLoginPage();
         loginPage.loginUser(emailNotRegister, passwordNotRegister);
         loginPage.clickOnLogin();
         loginPage.verifyNoRegisterUser(Variables.expected_no_register_user_error);
+    }
+
+    @Test(groups = {"Functional", "Integration"}, dataProviderClass = CustomDataProvider.class, dataProvider = "dp-recovery-credentials")
+    @Description("TC-Login-05")
+    public void forgetPasswordRecovery(Method method, String email) {
+        homePage.goToLoginPage();
+        loginPage.clickOnForgotPassword();
+        passwordRecoveryPage.verifyRecoveryPage(Variables.expected_password_recovery);
+        passwordRecoveryPage.recoveryPassword(email);
+        passwordRecoveryPage.verifyEmailRecoverySent();
     }
 }

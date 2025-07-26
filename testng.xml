@@ -19,6 +19,7 @@
                     <include name="doLoginWithInvalidCredentials"/>
                     <include name="doLoginWithEmptyFields"/>
                     <exclude name="doLoginWithNoRegisterUser"/>
+                    <include name="forgetPasswordRecovery"/>
                 </methods>
             </class>
         </classes>
@@ -41,6 +42,7 @@
                     <exclude name="doLoginWithInvalidCredentials"/>
                     <exclude name="doLoginWithEmptyFields"/>
                     <include name="doLoginWithNoRegisterUser"/>
+                    <exclude name="forgetPasswordRecovery"/>
                 </methods>
             </class>
         </classes>
@@ -63,6 +65,7 @@
                     <exclude name="doLoginWithInvalidCredentials"/>
                     <exclude name="doLoginWithEmptyFields"/>
                     <exclude name="doLoginWithNoRegisterUser"/>
+                    <include name="forgetPasswordRecovery"/>
                 </methods>
             </class>
         </classes>

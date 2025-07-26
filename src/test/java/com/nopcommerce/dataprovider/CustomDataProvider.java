@@ -19,4 +19,12 @@ public class CustomDataProvider {
                 {"benedict.schuppe@hotmail.com", "1234"}
         };
     }
+
+    @DataProvider(name = "dp-recovery-credentials")
+    public static Object[][] dataRecovery() {
+        return new Object[][]{
+                {"leonardo.metz@yahoo.com"},
+                {"benedict.schuppe@hotmail.com"}
+        };
+    }
 }

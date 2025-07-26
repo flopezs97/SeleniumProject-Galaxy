@@ -2,6 +2,8 @@ package com.nopcommerce.utils;
 
 public class Variables {
     public static final String BASE_URL = "https://demo.nopcommerce.com/";
+    public static final int TIME_WAIT = 10;
+
     public static String expected_title = "Your registration completed";
     public static String expected_firstname = "First name is required.";
     public static String expected_lastname = "Last name is required.";
@@ -19,5 +21,4 @@ public class Variables {
     public static String expected_no_register_user_error = "Login was unsuccessful. Please correct the errors and try again.\n"
             + "No customer account found";
     public static String expected_password_recovery = "Password recovery";
-    public static int TIME_WAIT = 10;
 }

@@ -1,6 +1,8 @@
 package com.nopcommerce.listeners;
 
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.nopcommerce.extentreports.ExtentManager;
 import com.nopcommerce.logs.Log;
 import com.nopcommerce.tests.BaseTest;
@@ -8,27 +10,30 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.util.Objects;
 
+import static com.nopcommerce.extentreports.ExtentManager.createExtentReport;
 import static com.nopcommerce.extentreports.ExtentTestManager.getTest;
 
-public class CustomListener extends BaseTest implements ITestListener, ISuiteListener {
+public class CustomListener extends BaseTest implements ITestListener {
     WebDriver driver;
 
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
+    @Override
     public void onStart(ITestContext iTestContext) {
         Log.info("I am in onStart method " + iTestContext.getName());
+        createExtentReport();
         iTestContext.setAttribute("WebDriver", this.driver);
     }
 
+    @Override
     public void onFinish(ITestContext iTestContext) {
         Log.info("I am in onFinish method " + iTestContext.getName());
         ExtentManager.extentReports.flush();
@@ -42,7 +47,7 @@ public class CustomListener extends BaseTest implements ITestListener, ISuiteLis
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         Log.info(getTestMethodName(iTestResult) + " test is succeed.");
-        getTest().log(Status.PASS, "Test passed");
+        getTest().log(Status.PASS, MarkupHelper.createLabel(iTestResult.getTestName(), ExtentColor.GREEN));
     }
 
     @Override

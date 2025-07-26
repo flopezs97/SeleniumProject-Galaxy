@@ -1,11 +1,11 @@
 package com.nopcommerce.tests;
 
 import com.github.javafaker.Faker;
+import com.nopcommerce.dataprovider.CustomDataProvider;
 import com.nopcommerce.utils.Variables;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
@@ -74,7 +74,7 @@ public class RegisterTest extends BaseTest {
         registerPage.verifyConfirmPassword(Variables.expected_confirm_password);
     }
 
-    @Test(groups = {"Integration"}, dataProvider = "dp-email-already-register")
+    @Test(groups = {"Integration"}, dataProviderClass = CustomDataProvider.class, dataProvider = "dp-email-already-register")
     @Description("TC-Register-06")
     public void doRegisterWithRepeatedEmail(Method method, String repeatedEmail, String repeatedPass)
             throws InterruptedException {
@@ -85,11 +85,4 @@ public class RegisterTest extends BaseTest {
         registerPage.verifyRepeatedEmail(Variables.expected_email_repeated);
     }
 
-    @DataProvider(name = "dp-email-already-register")
-    public Object[][] dataEmailRegister() {
-        return new Object[][]{
-                {"leonardo.metz@yahoo.com", "sRjt*J%#"},
-                {"benedict.schuppe@hotmail.com", "#tb5v7*o7"}
-        };
-    }
 }

@@ -13,6 +13,11 @@
                     <exclude name="doRegisterWithRepeatedEmail"/>
                 </methods>
             </class>
+            <class name="com.nopcommerce.tests.LoginTest">
+                <methods>
+                    <exclude name="doSuccessfulLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
     <test name="Regression Tests">
@@ -27,6 +32,11 @@
                     <exclude name="doRegisterWithRepeatedEmail"/>
                 </methods>
             </class>
+            <class name="com.nopcommerce.tests.LoginTest">
+                <methods>
+                    <include name="doSuccessfulLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
     <test name="Integration Tests">
@@ -39,6 +49,11 @@
                     <exclude name="doRegisterWithUnsecurePassword"/>
                     <include name="doRegisterWithNoMatchPasswords"/>
                     <include name="doRegisterWithRepeatedEmail"/>
+                </methods>
+            </class>
+            <class name="com.nopcommerce.tests.LoginTest">
+                <methods>
+                    <include name="doSuccessfulLogin"/>
                 </methods>
             </class>
         </classes>

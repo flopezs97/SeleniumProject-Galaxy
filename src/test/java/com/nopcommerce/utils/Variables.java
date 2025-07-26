@@ -12,4 +12,5 @@ public class Variables {
             "and not greater than 64 characters";
     public static String expected_confirm_password = "The password and confirmation password do not match.";
     public static String expected_email_repeated = "The specified email already exists";
+    public static String expected_my_account = "My account";
 }

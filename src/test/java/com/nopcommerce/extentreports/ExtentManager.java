@@ -15,9 +15,9 @@ public class ExtentManager {
     public synchronized static ExtentReports createExtentReport() {
         ExtentSparkReporter report = new ExtentSparkReporter(System.getProperty("user.dir") + "/extent-report/" + reportName
                 + ".html");
+        report.config().setTheme(Theme.DARK);
         report.config().setReportName("Report of NopCommerce");
         report.config().setDocumentTitle("Report of Nopcommerce tests");
-        report.config().setTheme(Theme.DARK);
         extentReports.attachReporter(report);
         extentReports.setSystemInfo("NopCommerce", "QE Team");
         extentReports.setSystemInfo("Author", "Fabian Lopez Sarango");

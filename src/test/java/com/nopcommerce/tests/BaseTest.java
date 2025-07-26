@@ -3,6 +3,7 @@ package com.nopcommerce.tests;
 import com.github.javafaker.Faker;
 import com.nopcommerce.logs.Log;
 import com.nopcommerce.pages.HomePage;
+import com.nopcommerce.pages.LoginPage;
 import com.nopcommerce.pages.RegisterPage;
 import com.nopcommerce.utils.Variables;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,6 +21,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected HomePage homePage;
     protected RegisterPage registerPage;
+    protected LoginPage loginPage;
 
     public Faker faker;
     public JavascriptExecutor js;
@@ -43,6 +45,7 @@ public class BaseTest {
         Log.info("Initializing Page Object Model");
         homePage = new HomePage(driver);
         registerPage = new RegisterPage(driver);
+        loginPage = new LoginPage(driver);
         js = (JavascriptExecutor) driver;
     }
 
